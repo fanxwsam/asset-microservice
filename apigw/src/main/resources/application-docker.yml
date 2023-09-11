@@ -1,0 +1,69 @@
+spring:
+  application:
+    name: apigw
+  zipkin:
+    base-url: http://zipkin:9411
+  cloud:
+    gateway:
+      routes:
+        - id: api-customers
+          uri: lb://API-CUSTOMERS
+          predicates:
+            - Path=/api/v1/customers/**, /customers/**
+
+        - id: api-users
+          uri: lb://API-USERS
+          predicates:
+            - Path=/api/v1/users/**, /users/**
+
+        - id: api-fraud
+          uri: lb://API-FRAUD
+          predicates:
+            - Path=/api/v1/fraud/**, /fraud/**
+
+        - id: api-messages
+          uri: lb://API-MESSAGES
+          predicates:
+            - Path=/api/**, /messages/**
+
+        - id: api-notifications
+          uri: lb://API-NOTIFICATIONS
+          predicates:
+            - Path=/api/**, /notifications/**
+
+        - id: api-security
+          uri: lb://API-SECURITY
+          predicates:
+            - Path=/api/v1/security/**, /security/**, /oauth2/**, /oauth/**
+management:
+  endpoints:
+    web:
+      exposure:
+        include:
+          - "*"
+  endpoint:
+    health:
+      probes:
+        enabled: true
+    gateway:
+      enabled: true
+
+server:
+  port: 8083
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://eureka-server:8761/eureka
+    fetch-registry: true
+    register-with-eureka: true
+
+
+springdoc:
+  swagger-ui:
+    url: /swagger-ui.html
+  api-docs:
+    path: /v3/api-docs
+
+api-key-name: x-api-key
+api-key-value: 11P9o9OYhcUjMnqVqoKPXFLLpr7z8FBNqvBF1111

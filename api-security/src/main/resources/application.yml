@@ -1,0 +1,25 @@
+spring:
+  application:
+    name: api-security
+  zipkin:
+    base-url: http://localhost:9411
+
+
+server:
+  port: 8000
+  forward-headers-strategy: framework
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka
+    fetch-registry: true
+    register-with-eureka: true
+
+springdoc:
+  api-docs:
+    groups:
+      enabled: true
+    path: /security/v3/api-docs
+  swagger-ui:
+    enabled: false

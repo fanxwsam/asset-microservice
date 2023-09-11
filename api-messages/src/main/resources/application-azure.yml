@@ -1,0 +1,41 @@
+server:
+  port: 8090
+  forward-headers-strategy: framework
+spring:
+  application:
+    name: api-messages
+  datasource:
+    password: password
+    url: jdbc:postgresql://postgres:5432/messages
+    username: postgres
+  jpa:
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+      format_sql: true
+    show-sql: true
+  zipkin:
+    base-url: http://zipkin:9411
+
+kafka:
+  topics: samservice
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://eureka-server:8761/eureka
+    fetch-registry: true
+    register-with-eureka: true
+    enabled: true
+  instance:
+    prefer-ip-address: true
+
+springdoc:
+  api-docs:
+    groups:
+      enabled: true
+    path: /messages/v3/api-docs
+  swagger-ui:
+    enabled: false

@@ -1,0 +1,164 @@
+{
+	"info": {
+		"_postman_id": "cdd41ff4-a94e-4459-a4a9-0aa2bf42f564",
+		"name": "Asset",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
+		"_exporter_id": "24709046",
+		"_collection_link": "https://dev-ahi.postman.co/workspace/Team-Workspace~a15c3db9-6ca5-46b9-8201-6f8dc696e455/collection/24709046-cdd41ff4-a94e-4459-a4a9-0aa2bf42f564?action=share&source=collection_link&creator=24709046"
+	},
+	"item": [
+		{
+			"name": "fraud-create-fraudster",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "test001@gmail.com",
+					"options": {
+						"raw": {
+							"language": "text"
+						}
+					}
+				},
+				"url": "{{base_url}}/api/v1/fraud/fraud-record/"
+			},
+			"response": []
+		},
+		{
+			"name": "fraud-get-fraudster-by-email",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "{{base_url}}/api/v1/fraud/fraud-record/test001@gmail.com"
+			},
+			"response": []
+		},
+		{
+			"name": "fraud-check-by-email",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": "{{base_url}}/api/v1/fraud/test001@gmail.com"
+			},
+			"response": []
+		},
+		{
+			"name": "customer",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"firstName\": \"Test1001\",\r\n    \"lastName\": \"Jerry\",\r\n    \"email\": \"fanxwsam@gmail.com\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "{{base_url}}/api/v1/customers"
+			},
+			"response": []
+		},
+		{
+			"name": "customer-query-by-lastname",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{ \r\n    \"lastName\": \"Jerry\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "{{base_url}}/api/v1/customers"
+			},
+			"response": []
+		},
+		{
+			"name": "user",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"key\": \"cc9ef456-c4d4-404e-a64c-32ef6dd4d516\",\r\n    \"createdDate\": \"2023-01-09T17:43:02.000+00:00\",\r\n    \"email\": \"axon2.smith@gmail.com\",\r\n    \"lastUpdatedDate\": \"2023-01-09T17:43:02.000+00:00\",\r\n    \"height\": 182,\r\n    \"weight\": 60.5,\r\n    \"stepHeight\": 72,\r\n    \"heightUnit\": \"cm\",\r\n    \"weightUnit\": \"kg\",\r\n    \"stepHeightUnit\": \"cm\",\r\n    \"dateOfBirth\": \"2000-01-02\",\r\n    \"biologicalSex\": \"M\",\r\n    \"ethnicityType\": \"EU\",\r\n    \"validatedTOS\": 18,\r\n    \"smoker\": 1,    \r\n    \"firstName\": \"Axon\",\r\n    \"lastName\": \"Smith\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "{{base_url}}/api/v1/users"
+			},
+			"response": []
+		},
+		{
+			"name": "user",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": "{{base_url}}/api/v1/users/cc9ef456-c4d4-404e-a64c-32ef6dd4d516"
+			},
+			"response": []
+		}
+	],
+	"auth": {
+		"type": "oauth2",
+		"oauth2": {
+			"addTokenTo": "header",
+			"accessTokenUrl": "{{auth_url}}/oauth2/token",
+			"authUrl": "{{auth_url}}/oauth2/authorize",
+			"tokenName": "asset",
+			"refreshRequestParams": [],
+			"tokenRequestParams": [],
+			"authRequestParams": [],
+			"challengeAlgorithm": "S256",
+			"useBrowser": true,
+			"scope": "openid read",
+			"grant_type": "authorization_code",
+			"clientSecret": "myClientSecretValue2",
+			"clientId": "postman",
+			"client_authentication": "body"
+		}
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	]
+}
