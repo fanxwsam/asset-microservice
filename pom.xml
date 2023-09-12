@@ -116,11 +116,11 @@
             <to>
               <tags>
 <!--                <tag>latest</tag>-->
-                <tag>2.4</tag>
+                <tag>2.5</tag>
               </tags>
               <auth>
                 <username>samuelest</username>
-                <password>007S1XXXXXXXXXX</password>
+                <password>007SXXXXXXXX1</password>
               </auth>
             </to>
           </configuration>

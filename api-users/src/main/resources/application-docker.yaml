@@ -16,10 +16,10 @@ server:
 
 azure:
   cosmos:
-    database: tkahidb
+    database: asset-demo
     populate-query-metrics: false
-    uri: https://ahi-bha-cosmos-uat.documents.azure.com:443/
-    key: dpVzoE5EA245pCSrOEVWPvRkAjysY6nUUJMgnOPn0UVPrU94dr0LzKKU9FLVkEnaIrl8YkistoaiACDbTwDYew==
+    uri: https://asset.documents.azure.com:443/
+    key: MFgipI6p9wdKtLneLURJH0uxCSXhLJ0uvf6M37EiIWF4SrR5EMeYEnBIYQyiRUSsmE4RBNBjY9xeACDbxYkmxw==
 
 
 eureka:
