@@ -17,11 +17,13 @@
     <module>clients</module>
     <module>apigw</module>
     <module>api-customers</module>
+    <module>api-graphql-cust-query</module>
     <module>api-fraud</module>
     <module>api-notifications</module>
     <module>api-messages</module>
     <module>api-users</module>
     <module>api-security</module>
+
   </modules>
 
 
@@ -120,7 +122,7 @@
               </tags>
               <auth>
                 <username>samuelest</username>
-                <password>007SXXXXXXXX1</password>
+                <password>007Samuel1</password>
               </auth>
             </to>
           </configuration>
