@@ -1,0 +1,82 @@
+server:
+  port: 8089
+spring:
+  application:
+    name: api-posts
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          issuer-uri: http://api-security:8000
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health, info, prometheus, metrics, beans, mappings
+      base-path: /actuator
+    enabled-by-default: true
+  endpoint:
+    health:
+      probes:
+        enabled: true
+      show-details: always
+      status:
+        http-mapping:
+          down: 503
+          out-of-service: 503
+          fatal: 500
+      group:
+        external-services:
+          include:
+            - postApi
+            - db
+  tracing:
+    sampling:
+      probability: 1.0
+  otlp:
+    tracing:
+      endpoint: http://localhost:4318/v1/traces
+
+  metrics:
+    tags:
+      department: ${SERVICE_DEPARTMENT:Software Development}
+      team: ${SERVICE_TEAM:Observability}
+      service: ${spring.application.name}
+      env: ${SERVICE_ENVIRONMENT:dev}
+      region: ${SERVICE_REGION:us-east1}
+      instance.id: ${SERVICE_INSTANCE_ID:${random.uuid}}
+
+  info:
+    env:
+      enabled: true
+logging:
+  pattern:
+    level: "%5p [${spring.application.name:},%X{traceId:-},%X{spanId:-}]"
+
+info:
+  app:
+    name: ${spring.application.name}
+    description: This is a demo for spring boot 3 observability
+    version: 1.0.0
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka
+    fetch-registry: true
+    register-with-eureka: true
+    enabled: true
+
+# swagger-ui custom path
+#springdoc:
+#  swagger-ui:
+#    path: swagger-ui.html
+
+springdoc:
+  api-docs:
+    groups:
+      enabled: true
+    path: /posts/v3/api-docs
+  swagger-ui:
+    enabled: false

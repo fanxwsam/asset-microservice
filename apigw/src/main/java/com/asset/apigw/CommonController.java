@@ -34,7 +34,12 @@ public class CommonController {
 //            String serviceExactName = serviceName.replaceAll("-api", "");
 //            swaggerUrls.add(new AbstractSwaggerUiConfigProperties.SwaggerUrl(serviceName, url + "/" + serviceExactName + "/v3/api-docs", serviceName));
 //        });
-        discoveryClient.getServices().stream().filter(serviceName -> serviceName.startsWith("api-")).forEach(serviceName -> {
+        discoveryClient.getServices().stream().filter(
+            serviceName ->
+                serviceName.startsWith("api-")
+                    || serviceName.startsWith("spring-")
+            )
+            .forEach(serviceName -> {
             String serviceExactName = serviceName.replaceAll("api-", "");
             swaggerUrls.add(new AbstractSwaggerUiConfigProperties.SwaggerUrl(serviceName, url + "/" + serviceExactName + "/v3/api-docs", serviceName));
         });

@@ -24,21 +24,25 @@ spring:
           predicates:
             - Path=/api/v1/fraud/**, /fraud/**
 
-        - id: api-messages
-          uri: lb://API-MESSAGES
-          predicates:
-            - Path=/api/**, /messages/**
-
-        - id: api-notifications
-          uri: lb://API-NOTIFICATIONS
-          predicates:
-            - Path=/api/**, /notifications/**
+#        - id: api-messages
+#          uri: lb://API-MESSAGES
+#          predicates:
+#            - Path=/api/**, /messages/**
+#
+#        - id: api-notifications
+#          uri: lb://API-NOTIFICATIONS
+#          predicates:
+#            - Path=/api/**, /notifications/**
 
         - id: api-security
           uri: lb://API-SECURITY
           predicates:
-            - Path=/api/**, /security/**
+            - Path=/api/v1/security/**, /security/**
 
+        - id: api-posts
+          uri: lb://API-POSTS
+          predicates:
+            - Path=/api/v1/posts/**, /posts/**
 #  cloud:
 #    gateway:
 #      discovery:

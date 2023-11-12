@@ -36,6 +36,10 @@ spring:
           predicates:
             - Path=/api/v1/security/**, /security/**, /oauth2/**, /oauth/**
 
+        - id: api-posts
+          uri: lb://API-POSTS
+          predicates:
+            - Path=/api/v1/posts/**, /posts/**
 
 
 management:
