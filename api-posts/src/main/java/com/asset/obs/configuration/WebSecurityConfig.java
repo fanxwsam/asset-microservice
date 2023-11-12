@@ -34,7 +34,7 @@ public class WebSecurityConfig {
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         return http.csrf(CsrfConfigurer::disable)
             .authorizeHttpRequests(requests -> requests
-                .requestMatchers("/swagger-ui/**", "/actuator/**", "/admin", "/**").permitAll()
+                .requestMatchers("/swagger-ui/**", "/actuator/**", "/admin").permitAll()
                 .anyRequest().authenticated())
             .oauth2ResourceServer(OAuth2ResourceServerConfigurer::jwt)
             .build();

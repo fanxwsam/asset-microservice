@@ -8,6 +8,7 @@ import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import java.util.List;
 import org.springframework.http.MediaType;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -17,6 +18,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 
 @Tag(name = "AuditionController", description = "Audition management APIs")
+@RequestMapping("/api/v1")
 @RestController
 public class AuditionController {
 
@@ -45,7 +47,7 @@ public class AuditionController {
             + "Param 'filter' can be null, which means return all the posts. \n\n"
             + " If any of the 4 fields userId, id, title and body contains the value of param 'filter', the post will be in the post list.",
         tags = {CONTROLLER_NAME, REQUEST_METHOD})
-    @RequestMapping(value = "/posts", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+    @GetMapping("/posts")
     public @ResponseBody List<AuditionPost> getPosts(final @RequestParam(value = "filter", required = false) String filter) {
 
         final List<AuditionPost> posts = auditionService.getPosts();
@@ -77,7 +79,7 @@ public class AuditionController {
         description = "Retrieves a specific audition post by its 'id'. \n\n"
             + "Performs input validation to ensure the 'id' is a valid integer. ",
         tags = {CONTROLLER_NAME, REQUEST_METHOD})
-    @RequestMapping(value = "/posts/{id}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+    @GetMapping("/posts/{id}")
     public @ResponseBody AuditionPost getPost(@PathVariable("id") final String postId) {
         // Input validation
         if (postId != null && postId.matches("\\d+")) {
@@ -99,7 +101,7 @@ public class AuditionController {
         description = "Retrieves an audition post along with its associated comments. \n\n"
             + " Performs input validation to ensure the postId is a valid integer.",
         tags = {CONTROLLER_NAME, REQUEST_METHOD})
-    @RequestMapping(value = "/posts/{postId}/comments", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+    @GetMapping("/posts/{postId}/comments")
     public @ResponseBody AuditionPost getPostWithComments(@PathVariable("postId") final String postId) {
 
         // Input validation
@@ -122,7 +124,7 @@ public class AuditionController {
         description = "Retrieves a list of comments for a specific audition post based on the provided query parameter (postId). \n\n"
             + " Performs input validation to ensure the postId is a valid integer.",
         tags = {CONTROLLER_NAME, REQUEST_METHOD})
-    @RequestMapping(value = "/comments", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+    @GetMapping( "/comments")
     public @ResponseBody List<AuditionPostComment> getCommentsByPostId(@RequestParam("postId") final String postId) {
 
         // Input validation

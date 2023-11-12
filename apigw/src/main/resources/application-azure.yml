@@ -24,12 +24,12 @@ spring:
         - id: api-messages
           uri: lb://API-MESSAGES
           predicates:
-            - Path=/api/**, /messages/**
+            - Path=/api/v1/messages/**, /messages/**
 
         - id: api-notifications
           uri: lb://API-NOTIFICATIONS
           predicates:
-            - Path=/api/**, /notifications/**
+            - Path=/api/v1/notifications/**, /notifications/**
 
         - id: api-security
           uri: lb://API-SECURITY
